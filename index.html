@@ -375,21 +375,79 @@
     overflow:hidden;
     transition:max-height .25s ease;
   }
-  .port[data-open="true"] .port-body{ max-height:600px; }
+  .port[data-open="true"] .port-body{ max-height:4000px; }
   .port-body-inner{
     padding:0 20px 20px 22px;
     border-top:1px solid var(--line-soft);
     margin-top:0;
     padding-top:14px;
   }
-  .port-body-inner ul{
-    margin:0; padding-left:18px;
+  .port-body-inner ul, .port-body-inner ol{
+    margin:0 0 12px; padding-left:18px;
     font-size:13.5px;
     color:#c7d0d5;
   }
   .port-body-inner li{ margin-bottom:6px; }
+  .summary-box ul{ margin-bottom:0; }
   .port-tags{
     display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;
+  }
+
+  .port-materi{
+    font-size:13.8px;
+    color:#c7d0d5;
+    max-width:74ch;
+  }
+  .port-materi h4{
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    letter-spacing:0.07em;
+    text-transform:uppercase;
+    color:var(--c);
+    margin:20px 0 8px;
+  }
+  .port-materi h4:first-child{ margin-top:0; }
+  .port-materi p{
+    margin:0 0 12px;
+  }
+  .port-materi strong{ color:var(--ink); font-weight:600; }
+  .materi-table{
+    width:100%;
+    border-collapse:collapse;
+    margin:6px 0 16px;
+    font-family:var(--font-mono);
+    font-size:12px;
+  }
+  .materi-table th, .materi-table td{
+    border:1px solid var(--line);
+    padding:7px 10px;
+    text-align:left;
+    vertical-align:top;
+  }
+  .materi-table th{
+    background:var(--bg-panel-2);
+    color:var(--ink-dim);
+    font-weight:500;
+    letter-spacing:0.02em;
+  }
+  .materi-table td{ color:#c7d0d5; }
+
+  .summary-box{
+    margin-top:18px;
+    border:1px solid var(--line);
+    border-left:3px solid var(--c);
+    background:var(--bg-panel-2);
+    padding:14px 16px;
+    border-radius:var(--radius);
+  }
+  .summary-box .sb-label{
+    font-family:var(--font-mono);
+    font-size:10.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--c);
+    margin-bottom:8px;
+    display:block;
   }
   .tag{
     font-family:var(--font-mono);
@@ -578,6 +636,23 @@ const MODULES = [
   // FASE 1 — Fondasi
   { phase:1, code:"01.01", title:"Karir dan Peluang Kerja Network Engineer",
     teaser:"Mengenal profesi dan gerbang karier di bidang jaringan.",
+    materi:`
+      <h4>Kenapa bidang jaringan dibutuhkan</h4>
+      <p>Hampir semua aktivitas digital — dari absensi sekolah, transaksi toko, sampai video call — berjalan di atas jaringan komputer. Setiap jaringan butuh orang yang membangun, merawat, dan mengamankannya. Itulah pekerjaan seorang <strong>network engineer</strong>: memastikan data mengalir dengan cepat, stabil, dan aman dari satu titik ke titik lain.</p>
+      <h4>Profesi di dunia jaringan</h4>
+      <p>Ada beberapa jalur karier yang bisa ditempuh lulusan TKJ, dan biasanya saling berkaitan satu sama lain:</p>
+      <ul>
+        <li><strong>Network Engineer</strong> — merancang dan mengonfigurasi jaringan (router, switch, wireless)</li>
+        <li><strong>System Administrator</strong> — mengelola server dan layanan di dalamnya</li>
+        <li><strong>IT Support / Helpdesk</strong> — menangani keluhan pengguna sehari-hari, biasanya pintu masuk paling umum</li>
+        <li><strong>NOC Engineer</strong> (Network Operation Center) — memantau kondisi jaringan 24 jam di ISP atau perusahaan besar</li>
+        <li><strong>Network Security Specialist</strong> — fokus melindungi jaringan dari serangan siber</li>
+      </ul>
+      <h4>Peran sertifikasi seperti MTCNA</h4>
+      <p>Ijazah SMK menunjukkan kamu sudah belajar, tapi sertifikasi seperti <strong>MTCNA (MikroTik Certified Network Associate)</strong> membuktikan kamu benar-benar bisa mengoperasikan perangkat sungguhan. Banyak perusahaan dan ISP di Indonesia memakai MikroTik, jadi sertifikat ini sering jadi nilai tambah nyata saat melamar kerja — kadang bahkan jadi syarat wajib. Ada juga sertifikasi lain seperti CCNA (Cisco) yang levelnya lebih tinggi dan bisa dikejar setelah lulus SMK.</p>
+      <h4>Bagaimana memulai</h4>
+      <p>Jalur paling umum: magang atau kerja sebagai IT Support/helpdesk dulu, sambil terus belajar dan mengejar sertifikasi. Dari situ, pengalaman menangani masalah nyata akan membuka jalan ke posisi network engineer penuh. Kompetensi yang paling dicari bukan cuma teknis, tapi juga kemampuan troubleshooting yang sabar dan mau terus belajar — karena teknologi jaringan terus berkembang.</p>
+    `,
     items:[
       "Profesi di bidang jaringan: Network Engineer, System Administrator, NOC Engineer, IT Support, Network Security Specialist",
       "Nilai sertifikasi industri (MTCNA, CCNA, dsb.) di mata dunia kerja",
@@ -586,6 +661,34 @@ const MODULES = [
     ] },
   { phase:1, code:"01.02", title:"Dasar Jaringan Komputer",
     teaser:"Konsep inti: jenis jaringan, model layer, dan protokol dasar.",
+    materi:`
+      <h4>Apa itu jaringan komputer</h4>
+      <p>Jaringan komputer adalah kumpulan perangkat yang saling terhubung agar bisa bertukar data dan berbagi sumber daya — misalnya berbagi printer, internet, atau file. Tanpa jaringan, tiap komputer akan bekerja sendiri-sendiri seperti pulau terpisah.</p>
+      <h4>Jenis jaringan berdasarkan cakupan</h4>
+      <table class="materi-table">
+        <tr><th>Jenis</th><th>Kepanjangan</th><th>Cakupan</th></tr>
+        <tr><td>LAN</td><td>Local Area Network</td><td>Satu gedung/ruangan, misalnya lab sekolah</td></tr>
+        <tr><td>MAN</td><td>Metropolitan Area Network</td><td>Satu kota, menghubungkan beberapa gedung</td></tr>
+        <tr><td>WAN</td><td>Wide Area Network</td><td>Antar kota/negara, contohnya internet</td></tr>
+      </table>
+      <h4>Model OSI dan TCP/IP</h4>
+      <p>Agar perangkat dari merek berbeda bisa saling "mengerti", komunikasi data dipecah menjadi lapisan-lapisan (layer). Model <strong>OSI</strong> punya 7 lapisan, mulai dari sinyal fisik sampai aplikasi yang kita pakai:</p>
+      <table class="materi-table">
+        <tr><th>#</th><th>Layer OSI</th><th>Contoh</th></tr>
+        <tr><td>7</td><td>Application</td><td>Browser, aplikasi chat</td></tr>
+        <tr><td>6</td><td>Presentation</td><td>Enkripsi, format data</td></tr>
+        <tr><td>5</td><td>Session</td><td>Menjaga sesi koneksi tetap terbuka</td></tr>
+        <tr><td>4</td><td>Transport</td><td>TCP, UDP</td></tr>
+        <tr><td>3</td><td>Network</td><td>IP address, routing</td></tr>
+        <tr><td>2</td><td>Data Link</td><td>MAC address, switch</td></tr>
+        <tr><td>1</td><td>Physical</td><td>Kabel, sinyal listrik/cahaya</td></tr>
+      </table>
+      <p>Dalam praktik sehari-hari, dunia jaringan lebih sering memakai model <strong>TCP/IP 4 layer</strong> yang lebih ringkas: Application, Transport, Internet, dan Network Access — pada dasarnya menggabungkan beberapa layer OSI di atas.</p>
+      <h4>Protokol dasar</h4>
+      <p><strong>TCP</strong> (Transmission Control Protocol) mengirim data secara terjamin — ada pengecekan apakah data sampai utuh, cocok untuk transfer file atau website. <strong>UDP</strong> (User Datagram Protocol) lebih cepat tapi tidak menjamin data sampai, cocok untuk video call atau game online yang mengutamakan kecepatan. Keduanya berjalan di atas <strong>IP</strong> (Internet Protocol), yang bertugas memberi alamat dan mengantar data ke tujuan yang tepat.</p>
+      <h4>Media transmisi</h4>
+      <p>Data bisa dikirim lewat kabel tembaga (UTP), kabel fiber optik (cahaya, lebih cepat dan tahan gangguan listrik), atau nirkabel (gelombang radio Wi-Fi). Pemilihan media tergantung jarak, kecepatan, dan biaya.</p>
+    `,
     items:[
       "Definisi jaringan komputer dan jenisnya: LAN, MAN, WAN",
       "Model referensi OSI 7 layer dan TCP/IP 4 layer",
@@ -594,6 +697,31 @@ const MODULES = [
     ] },
   { phase:1, code:"01.03", title:"IP Address dan Subnetting",
     teaser:"Pengalamatan jaringan, kelas IP, dan perhitungan subnet.",
+    materi:`
+      <h4>Apa itu IP Address</h4>
+      <p>Supaya data sampai ke perangkat yang tepat, tiap perangkat di jaringan butuh "alamat rumah" — itulah <strong>IP Address</strong>. IPv4 terdiri dari 32 bit yang ditulis dalam 4 angka (oktet) dipisah titik, misalnya <code>192.168.1.10</code>, tiap oktet bernilai 0–255. IPv6 adalah versi lebih baru dengan jumlah alamat jauh lebih banyak, ditulis dalam format heksadesimal.</p>
+      <h4>Kelas IP dan IP publik vs privat</h4>
+      <table class="materi-table">
+        <tr><th>Kelas</th><th>Range oktet pertama</th><th>Contoh privat</th></tr>
+        <tr><td>A</td><td>1–126</td><td>10.0.0.0/8</td></tr>
+        <tr><td>B</td><td>128–191</td><td>172.16.0.0/12</td></tr>
+        <tr><td>C</td><td>192–223</td><td>192.168.0.0/16</td></tr>
+      </table>
+      <p><strong>IP privat</strong> hanya berlaku di dalam jaringan lokal (LAN) dan tidak bisa diakses langsung dari internet. <strong>IP publik</strong> unik secara global dan bisa dihubungi dari mana saja — inilah yang dipakai router untuk terhubung ke internet.</p>
+      <h4>Subnet mask dan CIDR</h4>
+      <p>Subnet mask menentukan bagian mana dari IP address yang menunjukkan "jaringan" dan bagian mana yang menunjukkan "host" (perangkat). Contoh: <code>255.255.255.0</code> sama dengan notasi CIDR <code>/24</code>, artinya 24 bit pertama adalah bagian jaringan, sisanya 8 bit untuk host — cukup untuk 254 perangkat.</p>
+      <h4>Kenapa subnetting penting</h4>
+      <p><strong>Subnetting</strong> adalah membagi satu jaringan besar menjadi beberapa jaringan kecil. Manfaatnya: alokasi IP lebih efisien (tidak ada IP yang terbuang percuma), mengurangi broadcast yang membebani jaringan, dan memisahkan jaringan untuk keamanan — misalnya jaringan guru dipisah dari jaringan siswa.</p>
+      <h4>Contoh perhitungan sederhana</h4>
+      <table class="materi-table">
+        <tr><th>CIDR</th><th>Subnet mask</th><th>Jumlah host</th></tr>
+        <tr><td>/24</td><td>255.255.255.0</td><td>254</td></tr>
+        <tr><td>/25</td><td>255.255.255.128</td><td>126</td></tr>
+        <tr><td>/26</td><td>255.255.255.192</td><td>62</td></tr>
+        <tr><td>/27</td><td>255.255.255.224</td><td>30</td></tr>
+      </table>
+      <p>Teknik <strong>VLSM</strong> (Variable Length Subnet Mask) memungkinkan tiap bagian jaringan punya ukuran subnet berbeda sesuai kebutuhan — misalnya lab komputer butuh 30 IP, tapi ruang guru cukup 14 IP, sehingga alokasi tidak boros.</p>
+    `,
     items:[
       "IPv4 vs IPv6 dan format penulisannya",
       "Kelas IP (A, B, C) serta pengalamatan publik dan privat",
@@ -602,6 +730,26 @@ const MODULES = [
     ] },
   { phase:1, code:"01.04", title:"Topologi dan Perangkat Jaringan",
     teaser:"Bentuk jaringan dan perangkat yang membangunnya.",
+    materi:`
+      <h4>Apa itu topologi jaringan</h4>
+      <p>Topologi adalah pola bagaimana perangkat-perangkat dalam jaringan saling terhubung — baik secara fisik (kabel) maupun logis (jalur data).</p>
+      <table class="materi-table">
+        <tr><th>Topologi</th><th>Ciri</th><th>Kelebihan / kekurangan</th></tr>
+        <tr><td>Bus</td><td>Semua perangkat berbagi satu kabel utama</td><td>Hemat kabel, tapi satu titik putus mengganggu semua</td></tr>
+        <tr><td>Star</td><td>Semua perangkat terhubung ke satu switch/hub pusat</td><td>Paling umum dipakai, mudah dirawat, tapi bergantung pada perangkat pusat</td></tr>
+        <tr><td>Ring</td><td>Perangkat membentuk lingkaran tertutup</td><td>Data mengalir satu arah, satu titik putus bisa memutus seluruh ring</td></tr>
+        <tr><td>Mesh</td><td>Tiap perangkat terhubung ke banyak perangkat lain</td><td>Sangat andal tapi butuh banyak kabel/koneksi</td></tr>
+        <tr><td>Tree</td><td>Gabungan beberapa topologi star bertingkat</td><td>Cocok untuk jaringan besar bertingkat, seperti gedung sekolah</td></tr>
+      </table>
+      <h4>Perangkat jaringan dan fungsinya</h4>
+      <p><strong>Hub</strong> — perangkat lama yang meneruskan sinyal ke semua port tanpa pandang tujuan, sekarang jarang dipakai karena boros bandwidth.</p>
+      <p><strong>Switch</strong> — meneruskan data hanya ke perangkat tujuan berdasarkan MAC address, jauh lebih efisien daripada hub, biasa dipakai untuk menghubungkan komputer dalam satu LAN.</p>
+      <p><strong>Router</strong> — menghubungkan jaringan yang berbeda (misalnya LAN sekolah ke internet) dan mengatur jalur data berdasarkan IP address.</p>
+      <p><strong>Access Point (AP)</strong> — memancarkan sinyal Wi-Fi agar perangkat nirkabel bisa bergabung ke jaringan kabel.</p>
+      <p><strong>Firewall</strong> — menyaring trafik data untuk melindungi jaringan dari akses yang tidak diinginkan (bisa berupa perangkat khusus atau fitur di dalam router).</p>
+      <h4>Contoh penerapan</h4>
+      <p>Jaringan sekolah biasanya berbentuk <strong>star</strong> di tiap ruangan (semua PC ke satu switch), lalu beberapa switch ruangan dihubungkan membentuk <strong>tree</strong> ke satu router utama yang menyambung ke internet.</p>
+    `,
     items:[
       "Jenis topologi: bus, star, ring, mesh, tree",
       "Perangkat jaringan: hub, switch, router, access point, firewall",
@@ -612,6 +760,35 @@ const MODULES = [
   // FASE 2 — Praktik Fisik
   { phase:2, code:"02.05", title:"Praktik Crimping dan Kabelisasi",
     teaser:"Sesi lab intensif membangun keterampilan tangan.",
+    materi:`
+      <h4>Jenis kabel jaringan</h4>
+      <p><strong>UTP</strong> (Unshielded Twisted Pair) adalah kabel tembaga paling umum, tanpa pelindung ekstra, dipakai untuk jaringan LAN biasa. <strong>STP</strong> (Shielded Twisted Pair) punya lapisan pelindung tambahan sehingga lebih tahan gangguan elektromagnetik, cocok untuk lingkungan pabrik/industri. <strong>Fiber optik</strong> mengirim data lewat cahaya, jauh lebih cepat dan tahan jarak jauh, tapi butuh alat sambung khusus dan lebih mahal.</p>
+      <h4>Standar T568A dan T568B</h4>
+      <p>Urutan warna kabel di dalam konektor RJ45 mengikuti standar internasional agar semua perangkat kompatibel:</p>
+      <table class="materi-table">
+        <tr><th>Pin</th><th>T568A</th><th>T568B</th></tr>
+        <tr><td>1</td><td>Putih-Hijau</td><td>Putih-Oranye</td></tr>
+        <tr><td>2</td><td>Hijau</td><td>Oranye</td></tr>
+        <tr><td>3</td><td>Putih-Oranye</td><td>Putih-Hijau</td></tr>
+        <tr><td>4</td><td>Biru</td><td>Biru</td></tr>
+        <tr><td>5</td><td>Putih-Biru</td><td>Putih-Biru</td></tr>
+        <tr><td>6</td><td>Oranye</td><td>Hijau</td></tr>
+        <tr><td>7</td><td>Putih-Coklat</td><td>Putih-Coklat</td></tr>
+        <tr><td>8</td><td>Coklat</td><td>Coklat</td></tr>
+      </table>
+      <p><strong>Kabel straight-through</strong> memakai standar yang sama di kedua ujung (B–B), dipakai untuk menghubungkan perangkat berbeda jenis, misalnya PC ke switch. <strong>Kabel cross-over</strong> memakai standar berbeda di tiap ujung (A–B), dulu dipakai untuk menghubungkan perangkat sejenis seperti PC ke PC — meski sekarang banyak perangkat modern sudah otomatis mendeteksi (auto MDI-X) sehingga jenis kabel apapun cenderung berfungsi.</p>
+      <h4>Langkah praktik crimping</h4>
+      <ol>
+        <li>Kupas jaket luar kabel UTP sekitar 2–3 cm menggunakan crimping tool atau cable stripper</li>
+        <li>Urutkan 8 kabel kecil sesuai standar T568A atau T568B</li>
+        <li>Ratakan ujung kabel lalu potong rapi agar sama panjang</li>
+        <li>Masukkan ke konektor RJ45 dengan posisi pin sesuai urutan, pastikan tiap kabel menyentuh ujung konektor</li>
+        <li>Jepit (crimp) menggunakan crimping tool hingga pin menusuk kabel dengan kuat</li>
+        <li>Uji dengan LAN tester — semua lampu pada urutan 1–8 harus menyala berurutan di kedua ujung</li>
+      </ol>
+      <h4>Kesalahan yang sering terjadi</h4>
+      <p>Urutan warna tertukar, kabel tidak rata sehingga ada yang tidak menyentuh pin, atau jaket kabel terkupas terlalu pendek/panjang. Semua ini menyebabkan koneksi tidak stabil atau LAN tester menunjukkan "open/short".</p>
+    `,
     items:[
       "Jenis kabel: UTP, STP, dan fiber optik",
       "Standar pengurutan warna T568A dan T568B",
@@ -622,6 +799,18 @@ const MODULES = [
   // FASE 3 — MikroTik Dasar
   { phase:3, code:"03.06", title:"Instalasi RouterOS dan CHR",
     teaser:"Menyiapkan router — fisik maupun virtual.",
+    materi:`
+      <h4>Apa itu RouterOS</h4>
+      <p><strong>RouterOS</strong> adalah sistem operasi buatan MikroTik yang mengubah perangkat keras (PC biasa atau RouterBOARD) menjadi router, firewall, dan berbagai fungsi jaringan lainnya.</p>
+      <h4>Persiapan instalasi</h4>
+      <p>Sebelum instalasi, pastikan perangkat memenuhi kebutuhan minimum: prosesor dan RAM yang didukung, media penyimpanan (biasanya cukup kecil, mulai dari 64 MB), serta koneksi kabel LAN untuk mengakses perangkat pertama kali.</p>
+      <h4>Netinstall vs instalasi dari disk</h4>
+      <p><strong>Netinstall</strong> adalah aplikasi resmi MikroTik untuk menginstal atau reinstall RouterOS lewat jaringan, berguna terutama saat perangkat "bootloop" atau lupa password. Alternatif lain adalah instalasi lewat media disk/USB yang sudah berisi installer RouterOS, mirip menginstal sistem operasi pada umumnya: pilih paket yang dibutuhkan, format disk, lalu proses instalasi berjalan otomatis.</p>
+      <h4>Cloud Hosted Router (CHR)</h4>
+      <p><strong>CHR</strong> adalah versi RouterOS yang dijalankan sebagai mesin virtual (misalnya di VirtualBox, VMware, atau cloud server) — bukan perangkat keras RouterBOARD. CHR sangat berguna untuk latihan dan simulasi di sekolah karena siswa bisa membuat beberapa "router" virtual sekaligus di satu laptop tanpa perlu banyak perangkat fisik.</p>
+      <h4>Lisensi RouterOS</h4>
+      <p>RouterOS memakai sistem lisensi berjenjang (level 0 sampai 6) yang membatasi fitur dan jumlah pengguna. Perangkat RouterBOARD biasanya sudah dilengkapi lisensi bawaan, sedangkan CHR memiliki masa percobaan gratis sebelum perlu lisensi berbayar untuk penggunaan penuh/produksi.</p>
+    `,
     items:[
       "Persiapan hardware dan requirement instalasi RouterOS",
       "Instalasi RouterOS lewat Netinstall dan media disk",
@@ -630,6 +819,21 @@ const MODULES = [
     ] },
   { phase:3, code:"03.07", title:"Pengenalan MikroTik dan RouterOS",
     teaser:"Berkenalan dengan perangkat inti kelas.",
+    materi:`
+      <h4>Sejarah singkat MikroTik</h4>
+      <p>MikroTik adalah perusahaan asal Latvia yang berdiri sejak 1996, awalnya fokus mengembangkan sistem router untuk jaringan nirkabel. Kini produknya, terutama seri <strong>RouterBOARD</strong>, sangat populer di Indonesia karena harganya terjangkau namun fiturnya setara perangkat kelas enterprise.</p>
+      <h4>Cara mengakses RouterOS</h4>
+      <table class="materi-table">
+        <tr><th>Metode</th><th>Ciri</th></tr>
+        <tr><td>Winbox</td><td>Aplikasi desktop resmi, tampilan grafis lengkap, paling umum dipakai untuk konfigurasi sehari-hari</td></tr>
+        <tr><td>WebFig</td><td>Diakses lewat browser tanpa instalasi aplikasi tambahan, tampilan mirip Winbox</td></tr>
+        <tr><td>Terminal / SSH</td><td>Berbasis teks (command line), cocok untuk konfigurasi cepat atau otomatisasi lewat script</td></tr>
+      </table>
+      <h4>Struktur menu RouterOS</h4>
+      <p>Menu utama RouterOS dikelompokkan berdasarkan fungsi: <strong>Interfaces</strong> (kelola port fisik/virtual), <strong>IP</strong> (alamat, DHCP, DNS, firewall, routing), <strong>Wireless</strong> (konfigurasi Wi-Fi), <strong>System</strong> (identitas, waktu, pengguna, backup), dan <strong>Log</strong> (catatan aktivitas perangkat). Memahami pengelompokan ini memudahkan navigasi meskipun tampilan RouterOS terasa padat di awal.</p>
+      <h4>Backup vs Export</h4>
+      <p><strong>Backup</strong> menyimpan seluruh konfigurasi dalam format biner (.backup) yang hanya bisa dibaca kembali oleh RouterOS — cocok untuk pemulihan cepat di perangkat yang sama. <strong>Export</strong> menghasilkan file teks berisi perintah konfigurasi (.rsc) yang bisa dibaca manusia, diedit, dan dijalankan ulang di perangkat lain — lebih fleksibel untuk dokumentasi atau replikasi konfigurasi.</p>
+    `,
     items:[
       "Sejarah MikroTik dan lini produk RouterBOARD",
       "Cara mengakses perangkat: Winbox, WebFig, dan terminal SSH",
@@ -638,6 +842,18 @@ const MODULES = [
     ] },
   { phase:3, code:"03.08", title:"Interface dan Bridge",
     teaser:"Mengenal jalur masuk-keluar data pada router.",
+    materi:`
+      <h4>Apa itu interface</h4>
+      <p><strong>Interface</strong> adalah jalur keluar-masuk data pada router — bisa berupa port fisik (ethernet) maupun jalur virtual (wireless, VLAN, bridge). Setiap interface bisa diberi IP address, diatur, dan dipantau statusnya secara terpisah.</p>
+      <h4>Jenis-jenis interface</h4>
+      <p><strong>Ethernet</strong> — port fisik kabel LAN, biasanya diberi nama ether1, ether2, dst. <strong>Wireless</strong> — interface radio untuk Wi-Fi. <strong>VLAN</strong> (Virtual LAN) — interface virtual yang memisahkan trafik dalam satu jaringan fisik menjadi beberapa jaringan logis berbeda, berguna untuk memisahkan misalnya jaringan siswa dan jaringan guru tanpa kabel terpisah.</p>
+      <h4>Konsep bridge</h4>
+      <p><strong>Bridge</strong> menggabungkan beberapa interface menjadi satu jaringan logis di layer 2 (data link), seolah-olah semua perangkat yang terhubung ke interface tersebut berada dalam satu segmen jaringan yang sama — tanpa perlu routing antar mereka. Contoh: menggabungkan ether2 dan ether3 dalam satu bridge supaya perangkat di kedua port bisa saling berkomunikasi langsung seperti terhubung ke switch yang sama.</p>
+      <h4>Bridge vs routing</h4>
+      <p>Gunakan <strong>bridge</strong> saat ingin menyatukan beberapa port menjadi satu jaringan tunggal (misalnya menambah "port switch" pada router). Gunakan <strong>routing</strong> saat dua jaringan memang perlu tetap terpisah tapi bisa saling mengirim data lewat router — misalnya jaringan LAN kantor ke jaringan internet.</p>
+      <h4>Praktik dasar</h4>
+      <p>Langkah umum: buat interface bridge baru, lalu tambahkan port fisik yang diinginkan sebagai anggota (port) dari bridge tersebut, dan berikan satu IP address pada interface bridge itu — bukan pada tiap port satu per satu.</p>
+    `,
     items:[
       "Jenis interface: ethernet, wireless, VLAN",
       "Konsep bridge dan penggabungan beberapa interface",
@@ -648,6 +864,23 @@ const MODULES = [
   // FASE 4 — Layanan Jaringan
   { phase:4, code:"04.09", title:"DHCP Server dan DHCP Client",
     teaser:"Otomatisasi pemberian alamat IP di jaringan.",
+    materi:`
+      <h4>Kenapa perlu DHCP</h4>
+      <p>Membagikan IP address satu per satu secara manual ke puluhan perangkat sangat merepotkan dan rawan bentrok (dua perangkat memakai IP sama). <strong>DHCP</strong> (Dynamic Host Configuration Protocol) mengotomatiskan proses ini — perangkat baru yang terhubung ke jaringan otomatis mendapat IP address, gateway, dan DNS tanpa perlu diatur manual.</p>
+      <h4>Proses DORA</h4>
+      <p>DHCP bekerja lewat 4 tahap yang biasa disingkat <strong>DORA</strong>:</p>
+      <table class="materi-table">
+        <tr><th>Tahap</th><th>Penjelasan</th></tr>
+        <tr><td>Discover</td><td>Perangkat baru menyiarkan permintaan "adakah DHCP server di sini?"</td></tr>
+        <tr><td>Offer</td><td>DHCP server menjawab dengan menawarkan satu alamat IP yang tersedia</td></tr>
+        <tr><td>Request</td><td>Perangkat meminta secara resmi untuk memakai IP yang ditawarkan</td></tr>
+        <tr><td>Acknowledge</td><td>Server mengonfirmasi dan perangkat resmi memakai IP tersebut</td></tr>
+      </table>
+      <h4>Konfigurasi DHCP server</h4>
+      <p>Membuat DHCP server di MikroTik memerlukan tiga komponen utama: <strong>IP Pool</strong> (rentang IP yang boleh dibagikan, misalnya 192.168.1.10–192.168.1.100), <strong>Network</strong> (informasi gateway dan DNS yang akan diberikan ke client), dan <strong>lease time</strong> (berapa lama satu IP "dipinjamkan" ke perangkat sebelum diperbarui).</p>
+      <h4>DHCP client dan reservation</h4>
+      <p>Router juga bisa berperan sebagai <strong>DHCP client</strong> — misalnya port yang terhubung ke modem internet diatur untuk meminta IP otomatis dari ISP. Sementara itu, <strong>reservation</strong> (static lease) memungkinkan perangkat tertentu — misalnya server sekolah atau printer — selalu mendapat IP yang sama setiap kali terhubung, berdasarkan MAC address-nya, walau tetap dikelola lewat DHCP.</p>
+    `,
     items:[
       "Konsep DHCP dan cara kerja proses DORA",
       "Konfigurasi DHCP server di MikroTik",
@@ -656,6 +889,22 @@ const MODULES = [
     ] },
   { phase:4, code:"04.10", title:"DNS dan NAT",
     teaser:"Menerjemahkan nama domain dan menjembatani ke internet.",
+    materi:`
+      <h4>Apa itu DNS</h4>
+      <p>Manusia lebih mudah mengingat nama seperti <code>google.com</code> daripada deretan angka IP address. <strong>DNS</strong> (Domain Name System) bertugas menerjemahkan nama domain menjadi IP address yang sebenarnya dipakai komputer untuk berkomunikasi.</p>
+      <h4>Proses resolusi DNS</h4>
+      <p>Saat mengetik nama domain, perangkat akan bertanya ke DNS resolver (biasanya milik ISP atau layanan publik seperti 8.8.8.8). Jika resolver belum tahu jawabannya, ia akan bertanya berjenjang: mulai dari <strong>root server</strong>, ke <strong>TLD server</strong> (misalnya server untuk domain .com), sampai ke <strong>authoritative server</strong> pemilik domain tersebut, yang memberi jawaban IP address final.</p>
+      <h4>DNS di MikroTik</h4>
+      <p>Router MikroTik bisa diatur sebagai <strong>DNS cache/relay</strong> — meneruskan permintaan DNS dari client ke server DNS di internet, sekaligus menyimpan hasilnya sementara (cache) agar permintaan berikutnya lebih cepat dijawab tanpa perlu bertanya ke internet lagi.</p>
+      <h4>Konsep NAT</h4>
+      <p><strong>NAT</strong> (Network Address Translation) menerjemahkan IP privat di jaringan lokal menjadi satu IP publik saat keluar ke internet, dan sebaliknya. Ini penting karena IP publik terbatas jumlahnya, sementara satu jaringan bisa punya puluhan perangkat dengan IP privat.</p>
+      <table class="materi-table">
+        <tr><th>Jenis NAT</th><th>Fungsi</th><th>Contoh</th></tr>
+        <tr><td>Source NAT (masquerade)</td><td>Menyembunyikan banyak IP privat di balik satu IP publik saat keluar jaringan</td><td>Semua PC di sekolah mengakses internet lewat satu IP publik router</td></tr>
+        <tr><td>Destination NAT (port forwarding)</td><td>Mengarahkan trafik dari internet ke perangkat tertentu di jaringan lokal</td><td>Mengakses server sekolah dari luar lewat IP publik router</td></tr>
+      </table>
+      <p>Tanpa NAT, jaringan lokal dengan IP privat tidak akan bisa mengakses internet sama sekali — inilah sebabnya konfigurasi NAT (masquerade) adalah salah satu langkah wajib agar jaringan sekolah bisa online.</p>
+    `,
     items:[
       "Konsep DNS dan proses resolusi nama domain",
       "Konfigurasi DNS server/cache di MikroTik",
@@ -664,6 +913,18 @@ const MODULES = [
     ] },
   { phase:4, code:"04.11", title:"Routing Dasar",
     teaser:"Mengarahkan lalu lintas antar jaringan.",
+    materi:`
+      <h4>Apa itu routing table</h4>
+      <p>Setiap router menyimpan daftar yang disebut <strong>routing table</strong> — berisi informasi "untuk mencapai jaringan tujuan X, kirim data lewat jalur/interface Y". Setiap kali menerima data, router mencocokkan alamat tujuan dengan daftar ini untuk menentukan ke mana data harus diteruskan.</p>
+      <h4>Static routing</h4>
+      <p><strong>Static routing</strong> berarti administrator menentukan rute secara manual satu per satu. Cocok untuk jaringan kecil-menengah yang topologinya jarang berubah, karena lebih mudah dipahami dan tidak membebani router dengan proses perhitungan otomatis seperti pada routing dinamis.</p>
+      <h4>Default gateway</h4>
+      <p><strong>Default gateway</strong> adalah rute "cadangan terakhir" — jika router tidak menemukan rute spesifik yang cocok untuk suatu tujuan, data akan dikirim lewat default gateway ini. Contoh paling umum: semua trafik menuju internet diarahkan lewat default gateway yang tersambung ke ISP.</p>
+      <h4>Administrative distance</h4>
+      <p>Jika ada lebih dari satu kemungkinan rute menuju tujuan yang sama, router memilih berdasarkan <strong>administrative distance</strong> — semakin kecil nilainya, semakin dipercaya/diprioritaskan rute tersebut. Static route biasanya punya administrative distance yang bisa diatur, sehingga bisa dijadikan rute utama atau cadangan (backup) tergantung kebutuhan.</p>
+      <h4>Contoh kasus routing antar jaringan</h4>
+      <p>Bayangkan sekolah punya dua jaringan berbeda: jaringan lab (192.168.10.0/24) dan jaringan kantor (192.168.20.0/24), masing-masing terhubung ke router yang sama lewat interface berbeda. Agar dua jaringan ini bisa saling berkomunikasi, router hanya perlu tahu kedua jaringan tersebut "langsung terhubung" (connected route) — namun jika jaringan berada di router yang berbeda, dibutuhkan static route tambahan yang menunjuk ke IP router tetangga sebagai jalur menuju jaringan tersebut.</p>
+    `,
     items:[
       "Konsep routing table dan cara router membaca rute",
       "Static routing langkah demi langkah",
@@ -674,6 +935,23 @@ const MODULES = [
   // FASE 5 — Keamanan & Optimasi
   { phase:5, code:"05.12", title:"Firewall Dasar",
     teaser:"Menjaga jaringan dari akses dan trafik yang tidak diinginkan.",
+    materi:`
+      <h4>Apa itu firewall</h4>
+      <p><strong>Firewall</strong> adalah sistem yang menyaring trafik data berdasarkan aturan (rule) yang dibuat administrator — menentukan trafik mana yang boleh lewat dan mana yang harus diblokir. Tanpa firewall, router terbuka terhadap siapa saja yang mencoba mengakses atau menyerangnya dari internet.</p>
+      <h4>Tiga chain utama</h4>
+      <table class="materi-table">
+        <tr><th>Chain</th><th>Mengatur trafik</th></tr>
+        <tr><td>Input</td><td>Trafik yang ditujukan langsung ke router itu sendiri (misalnya login Winbox)</td></tr>
+        <tr><td>Forward</td><td>Trafik yang lewat router menuju perangkat lain (misalnya PC ke internet)</td></tr>
+        <tr><td>Output</td><td>Trafik yang berasal dari router itu sendiri menuju luar</td></tr>
+      </table>
+      <h4>Action pada rule firewall</h4>
+      <p>Setiap rule firewall memiliki action, yang paling umum: <strong>accept</strong> (izinkan lewat), <strong>drop</strong> (buang diam-diam tanpa pemberitahuan), dan <strong>reject</strong> (tolak dengan mengirim pesan penolakan ke pengirim). Rule dibaca berurutan dari atas ke bawah, dan begitu ada yang cocok, rule berikutnya tidak diperiksa lagi — karena itu urutan rule sangat penting.</p>
+      <h4>Contoh rule dasar</h4>
+      <p>Rule firewall dasar yang umum diterapkan di router sekolah: mengizinkan trafik dari jaringan lokal yang sudah dikenal, memblokir akses percobaan login dari luar jaringan (mencegah brute force ke Winbox/SSH), dan menolak paket yang tidak dikenal statusnya (invalid) yang sering menjadi indikasi serangan.</p>
+      <h4>Ancaman umum yang perlu diwaspadai</h4>
+      <p><strong>Brute force</strong> — mencoba banyak kombinasi password secara otomatis untuk masuk ke perangkat. <strong>DoS/DDoS</strong> — membanjiri router dengan trafik palsu sampai layanan menjadi lambat atau lumpuh. <strong>Port scanning</strong> — mencari celah dengan memeriksa port mana saja yang terbuka pada router. Firewall yang dikonfigurasi dengan baik adalah lapisan pertahanan pertama terhadap semua ancaman ini.</p>
+    `,
     items:[
       "Konsep firewall filter, NAT, dan mangle",
       "Chain firewall: input, forward, output",
@@ -682,6 +960,23 @@ const MODULES = [
     ] },
   { phase:5, code:"05.13", title:"Wireless Dasar",
     teaser:"Menghubungkan perangkat tanpa kabel.",
+    materi:`
+      <h4>Standar wireless 802.11</h4>
+      <p>Wi-Fi mengikuti standar keluarga <strong>IEEE 802.11</strong> yang terus berkembang: mulai dari 802.11b/g (lebih lama, frekuensi 2.4 GHz), 802.11n (mendukung kecepatan lebih tinggi), sampai 802.11ac (frekuensi 5 GHz, jauh lebih cepat namun jangkauan lebih pendek).</p>
+      <h4>Frekuensi 2.4 GHz vs 5 GHz</h4>
+      <p><strong>2.4 GHz</strong> punya jangkauan lebih jauh dan lebih baik menembus tembok, tapi lebih rentan interferensi karena dipakai banyak perangkat lain (Bluetooth, microwave). <strong>5 GHz</strong> menawarkan kecepatan lebih tinggi dengan interferensi lebih sedikit, namun jangkauannya lebih pendek dan kurang baik menembus penghalang.</p>
+      <h4>Mode wireless</h4>
+      <table class="materi-table">
+        <tr><th>Mode</th><th>Fungsi</th></tr>
+        <tr><td>AP bridge</td><td>Perangkat berperan sebagai access point, menerima banyak koneksi client</td></tr>
+        <tr><td>Station</td><td>Perangkat berperan sebagai client yang terhubung ke access point lain</td></tr>
+        <tr><td>Station bridge</td><td>Client yang sekaligus bisa meneruskan (bridging) trafik dari beberapa perangkat di baliknya</td></tr>
+      </table>
+      <h4>Keamanan wireless</h4>
+      <p>Jaringan wireless tanpa keamanan (open) sangat rawan disusupi. Standar keamanan yang direkomendasikan saat ini adalah <strong>WPA2</strong> (atau WPA3 pada perangkat lebih baru), yang mengenkripsi data antara perangkat dan access point menggunakan password (pre-shared key). Standar lama seperti WEP sudah dianggap tidak aman dan sebaiknya tidak dipakai lagi.</p>
+      <h4>Praktik setup access point</h4>
+      <p>Langkah dasar mengaktifkan wireless di MikroTik: aktifkan interface wireless, tentukan <strong>SSID</strong> (nama jaringan yang akan muncul di daftar Wi-Fi), pilih mode AP bridge, atur band frekuensi (2.4 GHz atau 5 GHz), lalu terapkan keamanan WPA2 dengan password yang kuat sebelum jaringan siap dipakai.</p>
+    `,
     items:[
       "Konsep wireless LAN dan standar 802.11",
       "Mode wireless: AP bridge, station, dan bridge",
@@ -690,6 +985,20 @@ const MODULES = [
     ] },
   { phase:5, code:"05.14", title:"Queue dan Bandwidth Management",
     teaser:"Membagi jatah bandwidth secara adil dan terkontrol.",
+    materi:`
+      <h4>Kenapa perlu manajemen bandwidth</h4>
+      <p>Tanpa pengaturan, satu pengguna yang mengunduh file besar bisa menghabiskan hampir seluruh kapasitas internet, membuat pengguna lain kesulitan mengakses jaringan. <strong>Queue</strong> di MikroTik digunakan untuk membatasi dan membagi bandwidth secara adil antar pengguna atau layanan.</p>
+      <h4>Simple Queue vs Queue Tree</h4>
+      <table class="materi-table">
+        <tr><th>Jenis</th><th>Karakteristik</th></tr>
+        <tr><td>Simple Queue</td><td>Mudah dikonfigurasi, cocok untuk membatasi bandwidth per IP/perangkat satu per satu</td></tr>
+        <tr><td>Queue Tree</td><td>Lebih fleksibel dan kompleks, bisa mengatur prioritas dan pembagian bandwidth bertingkat berdasarkan jenis trafik (butuh mangle firewall untuk menandai trafik terlebih dulu)</td></tr>
+      </table>
+      <h4>PCQ (Per Connection Queue)</h4>
+      <p><strong>PCQ</strong> memungkinkan bandwidth dibagi secara otomatis dan merata ke semua pengguna aktif, tanpa perlu membuat rule terpisah untuk tiap IP satu per satu. Misalnya, jika bandwidth total 10 Mbps dan ada 10 pengguna aktif, PCQ otomatis membagi kira-kira 1 Mbps per pengguna — dan pembagian ini menyesuaikan otomatis saat jumlah pengguna berubah.</p>
+      <h4>Contoh penerapan di sekolah</h4>
+      <p>Simple Queue cocok dipakai untuk membatasi bandwidth ruang guru dan ruang siswa secara terpisah dengan batas tetap. Sementara PCQ lebih cocok diterapkan di jaringan lab komputer, agar bandwidth otomatis terbagi rata ke semua siswa yang sedang aktif tanpa perlu mengatur satu per satu.</p>
+    `,
     items:[
       "Konsep dasar manajemen bandwidth",
       "Perbedaan Simple Queue dan Queue Tree",
@@ -700,6 +1009,21 @@ const MODULES = [
   // FASE 6 — Sertifikasi
   { phase:6, code:"06.15", title:"Review Materi MTCNA",
     teaser:"Merangkai kembali seluruh materi sebelum ujian.",
+    materi:`
+      <h4>Tujuan sesi review</h4>
+      <p>Setelah 14 modul sebelumnya, sesi ini menyambungkan kembali potongan-potongan materi menjadi satu gambaran utuh — bagaimana dasar jaringan, IP addressing, konfigurasi MikroTik, layanan jaringan, sampai keamanan saling berkaitan dalam satu sistem jaringan yang berjalan.</p>
+      <h4>Memetakan materi ke domain ujian MTCNA</h4>
+      <p>Ujian MTCNA menguji beberapa domain utama yang sudah tercermin dari urutan fase belajar kita: konsep dasar jaringan dan OSI, RouterOS dan Winbox, bridging, routing, firewall, wireless, sampai QoS/queue. Meninjau kembali tiap fase membantu memastikan tidak ada bagian yang terlewat.</p>
+      <h4>Strategi belajar efektif</h4>
+      <ul>
+        <li>Kerjakan ulang latihan soal per topik, jangan hanya membaca ulang catatan</li>
+        <li>Praktikkan konfigurasi langsung di RouterOS/CHR, bukan hanya menghafal langkah</li>
+        <li>Diskusikan studi kasus troubleshooting bersama teman — menjelaskan ke orang lain adalah cara ampuh menguji pemahaman sendiri</li>
+        <li>Catat topik yang masih terasa sulit untuk diperdalam sebelum tryout</li>
+      </ul>
+      <h4>Menuju tryout</h4>
+      <p>Sesi review ini adalah jembatan sebelum simulasi ujian penuh di modul berikutnya — gunakan untuk mengukur kesiapan diri secara jujur, bukan sekadar formalitas sebelum ujian.</p>
+    `,
     items:[
       "Rangkuman seluruh topik dari fase 1 sampai 5",
       "Latihan soal per topik untuk mengukur pemahaman",
@@ -708,6 +1032,16 @@ const MODULES = [
     ] },
   { phase:6, code:"06.16", title:"Tryout MTCNA",
     teaser:"Simulasi akhir sebelum ujian sesungguhnya.",
+    materi:`
+      <h4>Format tryout</h4>
+      <p>Tryout dirancang menyerupai kondisi ujian MTCNA sesungguhnya: soal <strong>pilihan ganda</strong> yang mencakup seluruh materi dari fase 1 hingga fase 5, dikerjakan dalam batas waktu tertentu tanpa membuka catatan — melatih kondisi ujian yang sebenarnya, termasuk tekanan waktu.</p>
+      <h4>Manajemen waktu saat ujian</h4>
+      <p>Salah satu tantangan terbesar peserta ujian bukan hanya pemahaman materi, tapi mengatur waktu. Strategi yang disarankan: kerjakan dulu soal yang yakin benar, tandai soal yang ragu untuk ditinjau ulang di akhir, dan jangan terlalu lama terpaku pada satu soal sulit.</p>
+      <h4>Pembahasan hasil</h4>
+      <p>Setelah tryout selesai, setiap soal dibahas bersama — bukan hanya memberi tahu jawaban benar, tapi menjelaskan alasan di baliknya, termasuk kenapa pilihan lain salah. Ini membantu meluruskan kesalahpahaman konsep yang mungkin belum terlihat dari sekadar membaca ulang materi.</p>
+      <h4>Rencana setelah tryout</h4>
+      <p>Hasil tryout dipakai untuk memetakan topik mana yang masih perlu diperkuat sebelum benar-benar mendaftar ujian MTCNA resmi. Siswa yang hasilnya sudah konsisten baik bisa diarahkan untuk mendaftar ujian sertifikasi sesungguhnya, sementara yang masih perlu penguatan bisa mendapat sesi tambahan pada topik yang lemah.</p>
+    `,
     items:[
       "Simulasi ujian dengan format dan durasi mendekati MTCNA asli",
       "Soal pilihan ganda mencakup seluruh materi jalur belajar",
@@ -740,7 +1074,11 @@ function renderRacks(){
         </button>
         <div class="port-body">
           <div class="port-body-inner">
-            <ul>${m.items.map(it => `<li>${it}</li>`).join('')}</ul>
+            <div class="port-materi">${m.materi}</div>
+            <div class="summary-box">
+              <span class="sb-label">Rangkuman · Poin Penting</span>
+              <ul>${m.items.map(it => `<li>${it}</li>`).join('')}</ul>
+            </div>
             <div class="port-tags"><span class="tag">Materi ${m.code}</span></div>
           </div>
         </div>
